@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class DexManager : MonoBehaviour
@@ -6,6 +7,7 @@ public class DexManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private Transform dexGridParent;
     [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private TextMeshProUGUI countText;
 
     [Header("Data")]
     [SerializeField] private List<PokemonData> pokemonDatabase = new List<PokemonData>();
@@ -15,13 +17,15 @@ public class DexManager : MonoBehaviour
         GeneratePokedex();
     }
 
-    // 도감 리스트 생성
     public void GeneratePokedex()
     {
         foreach (Transform child in dexGridParent)
         {
             Destroy(child.gameObject);
         }
+        int caughtCount = 0;
+        int totalCount = pokemonDatabase.Count;
+
         foreach (PokemonData data in pokemonDatabase)
         {
             GameObject newSlot = Instantiate(slotPrefab, dexGridParent);
@@ -31,6 +35,16 @@ public class DexManager : MonoBehaviour
             {
                 slotScript.Setup(data);
             }
+
+            if (data.isCaught)
+            {
+                caughtCount++;
+            }
+        }
+
+        if (countText != null)
+        {
+            countText.text = $"{caughtCount} / {totalCount}";
         }
     }
 }
