@@ -16,4 +16,4 @@ MonoBehaviour:
   pokemonName: "\uC774\uC0C1\uD574\uC528"
   pokemonSprite: {fileID: 0}
   isDiscovered: 0
-  isCaught: 0
+  isCaught: 1

@@ -1981,6 +1981,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DexManager
   dexGridParent: {fileID: 1360108815}
   slotPrefab: {fileID: 6045946486303954659, guid: dce049f43841dcd4f998a1f771e8fa76, type: 3}
+  countText: {fileID: 649454915}
   pokemonDatabase:
   - {fileID: 11400000, guid: 22583f1bb5bcdae439e3530f20abac04, type: 2}
   - {fileID: 11400000, guid: 22583f1bb5bcdae439e3530f20abac04, type: 2}
