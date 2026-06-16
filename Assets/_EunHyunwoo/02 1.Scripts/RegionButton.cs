@@ -1,5 +1,6 @@
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class RegionButton : MonoBehaviour
 {
@@ -59,4 +60,9 @@ public class RegionButton : MonoBehaviour
         CanvasGroup cg = CreditPopup.GetComponent<CanvasGroup>();
         cg.DOFade(0, 0.5f).OnComplete(() => CreditPopup.SetActive(false));
     }
+
+    public void OnClickBackToMain()
+ {
+    SceneManager.LoadScene("main");
+ }
 }
