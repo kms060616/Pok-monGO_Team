@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class DexManager : MonoBehaviour
@@ -9,6 +10,9 @@ public class DexManager : MonoBehaviour
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private TextMeshProUGUI countText;
     [SerializeField] private TMP_InputField searchInputField;
+
+    [Header("Filter Buttons")]
+    [SerializeField] private List<Image> filterButtonImages = new List<Image>();
 
     [Header("Top Counters")]
     [SerializeField] private TextMeshProUGUI shinyText;
@@ -29,9 +33,9 @@ public class DexManager : MonoBehaviour
         {
             searchInputField.onValueChanged.AddListener(OnSearchValueChanged);
         }
-
         ChangeFilter((int)PokemonForm.Normal);
     }
+
     public void OnSearchValueChanged(string value)
     {
         currentSearchQuery = value.Trim();
@@ -41,7 +45,31 @@ public class DexManager : MonoBehaviour
     public void ChangeFilter(int formIndex)
     {
         currentFilter = (PokemonForm)formIndex;
+
+        UpdateFilterButtonVisuals();
+
         GeneratePokedex();
+    }
+
+    private void UpdateFilterButtonVisuals()
+    {
+        for (int i = 0; i < filterButtonImages.Count; i++)
+        {
+            if (filterButtonImages[i] == null) continue;
+
+            if (i == (int)currentFilter)
+            {
+                Color c = filterButtonImages[i].color;
+                c.a = 1.0f;
+                filterButtonImages[i].color = c;
+            }
+            else
+            {
+                Color c = filterButtonImages[i].color;
+                c.a = 0.4f;
+                filterButtonImages[i].color = c;
+            }
+        }
     }
 
     public void GeneratePokedex()
@@ -65,10 +93,12 @@ public class DexManager : MonoBehaviour
             {
                 bool isMatchName = data.pokemonName.Contains(currentSearchQuery);
                 bool isMatchID = data.pokemonID.ToString().Contains(currentSearchQuery);
+
                 if (!string.IsNullOrEmpty(currentSearchQuery) && !isMatchName && !isMatchID)
                 {
                     continue;
                 }
+
                 totalCount++;
                 if (data.isCaught) caughtCount++;
                 if (data.isShiny) shinyCount++;
