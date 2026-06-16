@@ -17,3 +17,8 @@ MonoBehaviour:
   pokemonSprite: {fileID: 0}
   isDiscovered: 0
   isCaught: 1
+  isShiny: 0
+  isLucky: 0
+  isXXL: 0
+  isXXS: 0
+  isPerfect: 0

@@ -8,6 +8,11 @@ public class DexManager : MonoBehaviour
     [SerializeField] private Transform dexGridParent;
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private TextMeshProUGUI countText;
+    [SerializeField] private TextMeshProUGUI shinyText;
+    [SerializeField] private TextMeshProUGUI luckyText;
+    [SerializeField] private TextMeshProUGUI xxlText;
+    [SerializeField] private TextMeshProUGUI xxsText;
+    [SerializeField] private TextMeshProUGUI perfectText;
 
     [Header("Data")]
     [SerializeField] private List<PokemonData> pokemonDatabase = new List<PokemonData>();
@@ -24,6 +29,11 @@ public class DexManager : MonoBehaviour
             Destroy(child.gameObject);
         }
         int caughtCount = 0;
+        int shinyCount = 0;
+        int luckyCount = 0;
+        int xxlCount = 0;
+        int xxsCount = 0;
+        int perfectCount = 0;
         int totalCount = pokemonDatabase.Count;
 
         foreach (PokemonData data in pokemonDatabase)
@@ -36,15 +46,18 @@ public class DexManager : MonoBehaviour
                 slotScript.Setup(data);
             }
 
-            if (data.isCaught)
-            {
-                caughtCount++;
-            }
+            if (data.isCaught) caughtCount++;
+            if (data.isShiny) shinyCount++;
+            if (data.isLucky) luckyCount++;
+            if (data.isXXL) xxlCount++;
+            if (data.isXXS) xxsCount++;
+            if (data.isPerfect) perfectCount++;
         }
-
-        if (countText != null)
-        {
-            countText.text = $"{caughtCount} / {totalCount}";
-        }
+        if (countText != null) countText.text = $"{caughtCount} / {totalCount}";
+        if (shinyText != null) shinyText.text = shinyCount.ToString();
+        if (luckyText != null) luckyText.text = luckyCount.ToString();
+        if (xxlText != null) xxlText.text = xxlCount.ToString();
+        if (xxsText != null) xxsText.text = xxsCount.ToString();
+        if (perfectText != null) perfectText.text = perfectCount.ToString();
     }
 }

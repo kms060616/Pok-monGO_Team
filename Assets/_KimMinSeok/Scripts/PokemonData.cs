@@ -8,4 +8,10 @@ public class PokemonData : ScriptableObject
     public Sprite pokemonSprite;  
     public bool isDiscovered;
     public bool isCaught;
+
+    public bool isShiny;
+    public bool isLucky; 
+    public bool isXXL;
+    public bool isXXS;        
+    public bool isPerfect;
 }
