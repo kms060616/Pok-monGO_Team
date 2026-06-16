@@ -8,6 +8,8 @@ public class DexManager : MonoBehaviour
     [SerializeField] private Transform dexGridParent;
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private TextMeshProUGUI countText;
+
+    [Header("Top Counters")]
     [SerializeField] private TextMeshProUGUI shinyText;
     [SerializeField] private TextMeshProUGUI luckyText;
     [SerializeField] private TextMeshProUGUI xxlText;
@@ -16,9 +18,16 @@ public class DexManager : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] private List<PokemonData> pokemonDatabase = new List<PokemonData>();
+    private PokemonForm currentFilter = PokemonForm.Normal;
 
     void Start()
     {
+        ChangeFilter((int)PokemonForm.Normal);
+    }
+
+    public void ChangeFilter(int formIndex)
+    {
+        currentFilter = (PokemonForm)formIndex;
         GeneratePokedex();
     }
 
@@ -34,24 +43,28 @@ public class DexManager : MonoBehaviour
         int xxlCount = 0;
         int xxsCount = 0;
         int perfectCount = 0;
-        int totalCount = pokemonDatabase.Count;
+        int totalCount = 0;
 
         foreach (PokemonData data in pokemonDatabase)
         {
-            GameObject newSlot = Instantiate(slotPrefab, dexGridParent);
-            DexSlot slotScript = newSlot.GetComponent<DexSlot>();
-
-            if (slotScript != null)
+            if (data.pokemonForm == currentFilter)
             {
-                slotScript.Setup(data);
-            }
+                totalCount++;
+                if (data.isCaught) caughtCount++;
+                if (data.isShiny) shinyCount++;
+                if (data.isLucky) luckyCount++;
+                if (data.isXXL) xxlCount++;
+                if (data.isXXS) xxsCount++;
+                if (data.isPerfect) perfectCount++;
 
-            if (data.isCaught) caughtCount++;
-            if (data.isShiny) shinyCount++;
-            if (data.isLucky) luckyCount++;
-            if (data.isXXL) xxlCount++;
-            if (data.isXXS) xxsCount++;
-            if (data.isPerfect) perfectCount++;
+                GameObject newSlot = Instantiate(slotPrefab, dexGridParent);
+                DexSlot slotScript = newSlot.GetComponent<DexSlot>();
+
+                if (slotScript != null)
+                {
+                    slotScript.Setup(data);
+                }
+            }
         }
         if (countText != null) countText.text = $"{caughtCount} / {totalCount}";
         if (shinyText != null) shinyText.text = shinyCount.ToString();
