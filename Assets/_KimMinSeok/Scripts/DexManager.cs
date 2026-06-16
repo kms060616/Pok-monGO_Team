@@ -8,6 +8,7 @@ public class DexManager : MonoBehaviour
     [SerializeField] private Transform dexGridParent;
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private TextMeshProUGUI countText;
+    [SerializeField] private TMP_InputField searchInputField;
 
     [Header("Top Counters")]
     [SerializeField] private TextMeshProUGUI shinyText;
@@ -18,11 +19,23 @@ public class DexManager : MonoBehaviour
 
     [Header("Data")]
     [SerializeField] private List<PokemonData> pokemonDatabase = new List<PokemonData>();
+
     private PokemonForm currentFilter = PokemonForm.Normal;
+    private string currentSearchQuery = "";
 
     void Start()
     {
+        if (searchInputField != null)
+        {
+            searchInputField.onValueChanged.AddListener(OnSearchValueChanged);
+        }
+
         ChangeFilter((int)PokemonForm.Normal);
+    }
+    public void OnSearchValueChanged(string value)
+    {
+        currentSearchQuery = value.Trim();
+        GeneratePokedex();
     }
 
     public void ChangeFilter(int formIndex)
@@ -37,6 +50,7 @@ public class DexManager : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+
         int caughtCount = 0;
         int shinyCount = 0;
         int luckyCount = 0;
@@ -49,6 +63,12 @@ public class DexManager : MonoBehaviour
         {
             if (data.pokemonForm == currentFilter)
             {
+                bool isMatchName = data.pokemonName.Contains(currentSearchQuery);
+                bool isMatchID = data.pokemonID.ToString().Contains(currentSearchQuery);
+                if (!string.IsNullOrEmpty(currentSearchQuery) && !isMatchName && !isMatchID)
+                {
+                    continue;
+                }
                 totalCount++;
                 if (data.isCaught) caughtCount++;
                 if (data.isShiny) shinyCount++;
@@ -66,6 +86,7 @@ public class DexManager : MonoBehaviour
                 }
             }
         }
+
         if (countText != null) countText.text = $"{caughtCount} / {totalCount}";
         if (shinyText != null) shinyText.text = shinyCount.ToString();
         if (luckyText != null) luckyText.text = luckyCount.ToString();
