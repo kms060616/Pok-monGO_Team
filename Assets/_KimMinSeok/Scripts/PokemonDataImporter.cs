@@ -1,6 +1,8 @@
-using UnityEditor;
+
 using UnityEngine;
 using System.IO;
+#if UNITY_EDITOR
+using UnityEditor;
 
 public class PokemonDataImporter
 {
@@ -57,3 +59,4 @@ public class PokemonDataImporter
         Debug.Log("모든 포켓몬 데이터 에셋 생성이 완료되었습니다");
     }
 }
+#endif
