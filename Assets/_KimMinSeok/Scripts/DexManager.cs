@@ -118,10 +118,10 @@ public class DexManager : MonoBehaviour
         }
 
         if (countText != null) countText.text = $"{caughtCount} / {totalCount}";
-        if (shinyText != null) shinyText.text = shinyCount.ToString();
-        if (luckyText != null) luckyText.text = luckyCount.ToString();
-        if (xxlText != null) xxlText.text = xxlCount.ToString();
-        if (xxsText != null) xxsText.text = xxsCount.ToString();
-        if (perfectText != null) perfectText.text = perfectCount.ToString();
+        if (shinyText != null) shinyText.text = $"{shinyCount}\n색이다른";
+        if (luckyText != null) luckyText.text = $"{luckyCount}\n반짝반짝";
+        if (xxlText != null) xxlText.text = $"{xxlCount}\nXXL";
+        if (xxsText != null) xxsText.text = $"{xxsCount}\nxxs";
+        if (perfectText != null) perfectText.text = $"{perfectCount}\n100%";
     }
 }

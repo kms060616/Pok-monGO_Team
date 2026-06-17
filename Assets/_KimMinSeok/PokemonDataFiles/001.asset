@@ -17,7 +17,7 @@ MonoBehaviour:
   pokemonSprite: {fileID: 21300000, guid: 0755f3547c05d8a4894b20c2e7702d44, type: 3}
   isDiscovered: 0
   isCaught: 1
-  isShiny: 0
+  isShiny: 1
   isLucky: 0
   isXXL: 0
   isXXS: 0
