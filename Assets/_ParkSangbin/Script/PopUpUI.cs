@@ -1,7 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 
-public class PopUI : MonoBehaviour
+public class PopUpUI : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
 
