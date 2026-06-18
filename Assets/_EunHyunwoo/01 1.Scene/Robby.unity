@@ -384,6 +384,7 @@ MonoBehaviour:
   Panel0001: {fileID: 0}
   Panel0004: {fileID: 0}
   CreditPopup: {fileID: 0}
+  CreditCloseButton: {fileID: 0}
 --- !u!1 &76627242
 GameObject:
   m_ObjectHideFlags: 0
@@ -2686,6 +2687,7 @@ MonoBehaviour:
   Panel0001: {fileID: 0}
   Panel0004: {fileID: 0}
   CreditPopup: {fileID: 0}
+  CreditCloseButton: {fileID: 0}
 --- !u!1 &441012749
 GameObject:
   m_ObjectHideFlags: 0
@@ -3760,8 +3762,8 @@ RectTransform:
   m_Children:
   - {fileID: 2027219881}
   - {fileID: 696125888}
-  - {fileID: 1313260006}
   - {fileID: 1319951853}
+  - {fileID: 1313260006}
   m_Father: {fileID: 1622540665}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4961,6 +4963,7 @@ MonoBehaviour:
   Panel0001: {fileID: 0}
   Panel0004: {fileID: 0}
   CreditPopup: {fileID: 0}
+  CreditCloseButton: {fileID: 0}
 --- !u!1 &764056881
 GameObject:
   m_ObjectHideFlags: 0
@@ -10154,7 +10157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1313260006
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10162,7 +10165,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1313260005}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10171,7 +10174,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 311, y: 586}
+  m_AnchoredPosition: {x: 310.99994, y: 585.9999}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313260007
@@ -11116,6 +11119,7 @@ MonoBehaviour:
   Panel0001: {fileID: 0}
   Panel0004: {fileID: 0}
   CreditPopup: {fileID: 0}
+  CreditCloseButton: {fileID: 0}
 --- !u!1 &1394220102
 GameObject:
   m_ObjectHideFlags: 0
@@ -12147,6 +12151,7 @@ MonoBehaviour:
   Panel0001: {fileID: 0}
   Panel0004: {fileID: 0}
   CreditPopup: {fileID: 0}
+  CreditCloseButton: {fileID: 0}
 --- !u!114 &1564951215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12613,6 +12618,7 @@ MonoBehaviour:
   Panel0001: {fileID: 1870538007}
   Panel0004: {fileID: 167364576}
   CreditPopup: {fileID: 614382756}
+  CreditCloseButton: {fileID: 1313260005}
 --- !u!1 &1632077485
 GameObject:
   m_ObjectHideFlags: 0
@@ -13188,6 +13194,7 @@ MonoBehaviour:
   Panel0001: {fileID: 0}
   Panel0004: {fileID: 0}
   CreditPopup: {fileID: 0}
+  CreditCloseButton: {fileID: 0}
 --- !u!1 &1667130998
 GameObject:
   m_ObjectHideFlags: 0

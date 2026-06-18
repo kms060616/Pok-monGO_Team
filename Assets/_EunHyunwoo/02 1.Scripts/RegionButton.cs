@@ -1,6 +1,6 @@
 using UnityEngine;
-using DG.Tweening;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public class RegionButton : MonoBehaviour
 {
@@ -9,6 +9,7 @@ public class RegionButton : MonoBehaviour
     public GameObject Panel0001;
     public GameObject Panel0004;
     public GameObject CreditPopup;
+    public GameObject CreditCloseButton;
 
     public void OnClickKanto()
     {
@@ -49,6 +50,7 @@ public class RegionButton : MonoBehaviour
     public void OnClickCredit()
     {
         CreditPopup.SetActive(true);
+        CreditCloseButton.SetActive(true);
         CanvasGroup cg = CreditPopup.GetComponent<CanvasGroup>();
         if (cg == null) cg = CreditPopup.AddComponent<CanvasGroup>();
         cg.alpha = 0;
@@ -58,11 +60,14 @@ public class RegionButton : MonoBehaviour
     public void OnClickCreditClose()
     {
         CanvasGroup cg = CreditPopup.GetComponent<CanvasGroup>();
-        cg.DOFade(0, 0.5f).OnComplete(() => CreditPopup.SetActive(false));
+        cg.DOFade(0, 0.5f).OnComplete(() => {
+            CreditPopup.SetActive(false);
+            CreditCloseButton.SetActive(false);
+        });
     }
 
     public void OnClickBackToMain()
- {
-    SceneManager.LoadScene("main");
- }
+    {
+        SceneManager.LoadScene("main");
+    }
 }
